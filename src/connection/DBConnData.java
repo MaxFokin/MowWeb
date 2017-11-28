@@ -12,9 +12,6 @@ final class DBConnData {
 	
 	private HashMap jsonData = null;
 	final private LinkedTreeMap ConnData;
-	//final private String host = "";
-	//final private String user = "";
-	//final private String pass = "";
 	  
 	protected DBConnData() {
 		openConnFile();
