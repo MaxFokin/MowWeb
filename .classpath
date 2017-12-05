@@ -5,5 +5,9 @@
 	<classpathentry exported="true" kind="lib" path="API/mysql-connector-java-5.1.44-bin.jar"/>
 	<classpathentry exported="true" kind="lib" path="API/gson-2.8.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="API/force-wsc-42.0.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="API/enterprise.jar"/>
+	<classpathentry exported="true" kind="lib" path="API/epartner.jar"/>
+	<classpathentry exported="true" kind="lib" path="API/metadata.jar"/>
+	<classpathentry exported="true" kind="lib" path="API/rhino-1.7.7.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
