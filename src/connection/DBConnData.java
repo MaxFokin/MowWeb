@@ -10,33 +10,22 @@ import com.google.gson.internal.LinkedTreeMap;
 
 final class DBConnData {	
 	
-	private HashMap jsonData = null;
 	final private LinkedTreeMap ConnData;
+	final private ConnDataHandle ConnJson = new ConnDataHandle();
 	  
 	protected DBConnData() {
-		openConnFile();
-		LinkedTreeMap ConnData = new LinkedTreeMap();
-		ConnData = (LinkedTreeMap) jsonData.get("mySQL");
+		LinkedTreeMap ConnData = ConnJson.getKey("mySQL");
 		this.ConnData = ConnData;
-	}
-	
-	protected void openConnFile() {
-		Gson ConnData = new Gson();
-		
-		try {
-			this.jsonData = ConnData.fromJson(new FileReader("ConnData.json"), HashMap.class);
-		} catch (FileNotFoundException | JsonSyntaxException | JsonIOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	protected String getHost() {
 		return this.ConnData.get("host").toString();
 	}
+	
 	protected String getUser() {
 		return this.ConnData.get("user").toString();
 	}
+	
 	protected String getPass() {
 		return this.ConnData.get("pass").toString();
 	}
