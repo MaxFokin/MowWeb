@@ -10,7 +10,5 @@ public class mainSRV {
 		//SFDC Connection
 		wscConnection sfdcConn = new wscConnection();
 		sfdcConn.setConnection();
-		
-		
 	}
 }
