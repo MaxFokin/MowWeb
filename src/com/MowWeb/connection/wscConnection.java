@@ -1,4 +1,4 @@
-package connection;
+package com.MowWeb.connection;
 
 import com.sforce.soap.enterprise.Connector;
 import com.sforce.soap.enterprise.EnterpriseConnection;

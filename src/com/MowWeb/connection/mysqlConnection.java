@@ -1,4 +1,4 @@
-package connection;
+package com.MowWeb.connection;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;

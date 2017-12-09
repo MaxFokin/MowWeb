@@ -1,4 +1,4 @@
-package connection;
+package com.MowWeb.connection;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

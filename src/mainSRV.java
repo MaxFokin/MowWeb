@@ -1,4 +1,4 @@
-import connection.*;
+import com.MowWeb.connection.*;
 
 public class mainSRV {
 	
