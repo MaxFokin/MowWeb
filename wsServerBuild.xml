@@ -1,7 +1,7 @@
 <project default="wsgen">
 	<target name="wsgen" >
 		<exec executable="wsgen">
-			<arg line="-cp ./bin -keep -s ./src -d ./bin com.MowWeb.wsServer.sayHello"/>
+			<arg line="-cp ./bin -keep -s ./src -d ./bin com.MowWeb.webService.HelloWorldImpl"/>
 		</exec>
 	</target>
 </project>
