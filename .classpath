@@ -9,5 +9,7 @@
 	<classpathentry exported="true" kind="lib" path="API/epartner.jar"/>
 	<classpathentry exported="true" kind="lib" path="API/metadata.jar"/>
 	<classpathentry exported="true" kind="lib" path="API/rhino-1.7.7.2.jar"/>
+	<classpathentry kind="lib" path="API/c3p0-0.9.5.2.jar"/>
+	<classpathentry kind="lib" path="API/mchange-commons-java-0.2.14.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

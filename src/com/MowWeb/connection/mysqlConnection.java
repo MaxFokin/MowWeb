@@ -3,9 +3,15 @@ package com.MowWeb.connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Connection;
+/**
+ * !!! NOT in USE !!!
+ * Using c3p0 instead
+ *  
+ */
+
 
 public final class mysqlConnection {
-	
+/*	
 	  private Connection conn = null;
 	  final private DBConnData dbConnData = new DBConnData();
 	  
@@ -15,8 +21,10 @@ public final class mysqlConnection {
 	      Class.forName("com.mysql.jdbc.Driver");
 	      
 	      // Setup the connection with the DB
-	      conn = DriverManager.getConnection("jdbc:mysql://"
-	    		  		+ dbConnData.getHost() , dbConnData.getUser() , dbConnData.getPass() );
+	      this.conn = DriverManager.getConnection("jdbc:mysql://"
+	    		  		+ dbConnData.getHost()  + "/mowwebdb?autoReconnect=true&useSSL=false",
+	    		  			dbConnData.getUser() ,
+	    		  				dbConnData.getPass() );
 	      System.out.println("SQL connection succeed");
 	    
 	    } catch (SQLException ex) {
@@ -27,4 +35,5 @@ public final class mysqlConnection {
 	    	System.out.println("mysql.jdbc.Driver Error: " + ex.getStackTrace());
 	    }
 	  }
+  */
 }

@@ -19,13 +19,14 @@ final public class wscConnection {
             this.conn = Connector.newConnection(config);
 
             // display some current settings
-            System.out.println("Auth EndPoint: "+config.getAuthEndpoint());
-            System.out.println("Service EndPoint: "+config.getServiceEndpoint());
-            System.out.println("Username: "+config.getUsername());
-            System.out.println("SessionId: "+config.getSessionId());
+            System.out.println("*** SFDC Connection ***");
+            System.out.println("\tAuth EndPoint: "+config.getAuthEndpoint());
+            System.out.println("\tService EndPoint: "+config.getServiceEndpoint());
+            System.out.println("\tUsername: "+config.getUsername());
+            System.out.println("\tSessionId: "+config.getSessionId());
 
-        } catch (ConnectionException e1) {
-            e1.printStackTrace();
+        } catch (ConnectionException e) {
+            e.printStackTrace();
         }
     }
 }
