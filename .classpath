@@ -2,14 +2,15 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry exported="true" kind="lib" path="API/mysql-connector-java-5.1.44-bin.jar"/>
 	<classpathentry exported="true" kind="lib" path="API/gson-2.8.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="API/force-wsc-42.0.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="API/enterprise.jar"/>
-	<classpathentry exported="true" kind="lib" path="API/epartner.jar"/>
-	<classpathentry exported="true" kind="lib" path="API/metadata.jar"/>
-	<classpathentry exported="true" kind="lib" path="API/rhino-1.7.7.2.jar"/>
-	<classpathentry kind="lib" path="API/c3p0-0.9.5.2.jar"/>
-	<classpathentry kind="lib" path="API/mchange-commons-java-0.2.14.jar"/>
+	<classpathentry exported="true" kind="lib" path="API/jaxrs-ri/api/javax.ws.rs-api-2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="API/SFDC/enterprise.jar"/>
+	<classpathentry exported="true" kind="lib" path="API/SFDC/epartner.jar"/>
+	<classpathentry exported="true" kind="lib" path="API/SFDC/force-wsc-42.0.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="API/SFDC/metadata.jar"/>
+	<classpathentry exported="true" kind="lib" path="API/SFDC/rhino-1.7.7.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="API/mySQL/c3p0-0.9.5.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="API/mySQL/mchange-commons-java-0.2.14.jar"/>
+	<classpathentry exported="true" kind="lib" path="API/mySQL/mysql-connector-java-5.1.44-bin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
