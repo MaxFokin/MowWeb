@@ -21,5 +21,6 @@
 	<classpathentry exported="true" kind="lib" path="API/jaxrs-ri/lib/jersey-media-sse.jar"/>
 	<classpathentry exported="true" kind="lib" path="API/jaxrs-ri/lib/jersey-server.jar"/>
 	<classpathentry exported="true" kind="lib" path="API/gson-2.8.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="API/jaxrs-ri/lib/jersey-container-jdk-http-2.26.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
