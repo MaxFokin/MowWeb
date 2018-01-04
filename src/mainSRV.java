@@ -41,5 +41,8 @@ public final class mainSRV {
 		
 		//rest Publish
 		//@TODO
+		RSPublisher rsApp = new RSPublisher();
+		rsApp.run();
+		System.out.println("*** RESTful Service Has Started ***\n\t@ http://localhost:8080/rest/");
 	}
 }

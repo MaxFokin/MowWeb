@@ -1,4 +1,4 @@
-package com.MowWeb.rest;
+package com.MowWeb.rest.items;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,7 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Request;
 
-public interface RSInterface {
+public interface RSItemsInterface {
  
 	public Item getItem(int itemId);
 	public List<Item> getAllItems();

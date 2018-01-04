@@ -6,14 +6,14 @@ import javax.ws.rs.core.UriBuilder;
 import org.glassfish.jersey.jdkhttp.JdkHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
-public class RSPublisher {
+public final class RSPublisher {
 	
-	private final static int port = 8080;
-	private final static String host="http://localhost/";
+	private final int port = 8080;
+	private final String host="http://localhost/";
+	ResourceConfig config = new Application();
 	 
 	public void run() {
 		URI baseUri = UriBuilder.fromUri(host).port(port).build();
-		ResourceConfig config = new ResourceConfig(RSImpl.class);
 		HttpServer server = JdkHttpServerFactory.createHttpServer(baseUri, config);
 	}
 }

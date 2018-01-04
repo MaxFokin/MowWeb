@@ -1,4 +1,4 @@
-package com.MowWeb.rest;
+package com.MowWeb.rest.items;
 
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
@@ -13,8 +13,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
 
 
-@Path("/items")
-public class RSImpl implements RSInterface {
+@Path("/rest/items")
+public class RSItemsImpl implements RSItemsInterface {
 	
 	@Override
 	@RolesAllowed("INTERFACE")
@@ -23,7 +23,7 @@ public class RSImpl implements RSInterface {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Item getItem(@PathParam("itemId") int itemId) {
-		
+		//@TODO 
 	 }
 	
 	
@@ -33,7 +33,7 @@ public class RSImpl implements RSInterface {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Item> getAllItems() {
-		
+		//@TODO 
 	}
 	
 }
