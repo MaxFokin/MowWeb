@@ -1,11 +1,14 @@
 import com.MowWeb.connection.*;
-import com.MowWeb.webService.*;
+import com.MowWeb.rest.*;
 
 import java.beans.PropertyVetoException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.xml.ws.Endpoint;
+
+import org.glassfish.jersey.jdkhttp.JdkHttpServerFactory;
+import org.glassfish.jersey.server.ResourceConfig;
 
 public final class mainSRV {
 	
@@ -36,8 +39,7 @@ public final class mainSRV {
 		//SFDC Connection
 		sfdcConn.setConnection();
 		
-		//WebService Publish
-		Endpoint.publish("http://localhost:8080/WS",new WSImpl());
-		System.out.println("*** WebService Has Started ***\n\t@ http://localhost:8080/WS");
+		//rest Publish
+		//@TODO
 	}
 }
