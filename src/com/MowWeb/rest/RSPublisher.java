@@ -15,5 +15,7 @@ public final class RSPublisher {
 	public void run() {
 		URI baseUri = UriBuilder.fromUri(host).port(port).build();
 		HttpServer server = JdkHttpServerFactory.createHttpServer(baseUri, config);
+		
+		System.out.println("*** RESTful Service Has Started ***\n\t@ http://localhost:8080/rest/");
 	}
 }

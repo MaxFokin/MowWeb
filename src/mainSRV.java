@@ -13,6 +13,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 public final class mainSRV {
 	
 	static final wscConnection sfdcConn = new wscConnection();
+	static final RSPublisher rsApp = new RSPublisher();
 	
 	public static wscConnection get_sfdcConn() {
 		return sfdcConn;
@@ -39,10 +40,7 @@ public final class mainSRV {
 		//SFDC Connection
 		sfdcConn.setConnection();
 		
-		//rest Publish
-		//@TODO
-		RSPublisher rsApp = new RSPublisher();
+		//RESTful Service Publish
 		rsApp.run();
-		System.out.println("*** RESTful Service Has Started ***\n\t@ http://localhost:8080/rest/");
 	}
 }
