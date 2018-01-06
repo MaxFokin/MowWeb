@@ -1,4 +1,4 @@
-package com.MowWeb.services.rest;
+package com.MowWeb.services.rest.util;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,6 +8,7 @@ import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
+import java.sql.Time;
 import java.text.DateFormat;
 
 import javax.ws.rs.WebApplicationException;
@@ -33,7 +34,8 @@ public class GsonMessageBodyHandler implements MessageBodyWriter<Object>,
             final GsonBuilder gsonBuilder = new GsonBuilder();
             gson = gsonBuilder.disableHtmlEscaping()
                     .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-                    .setDateFormat("YYYY-MM-DD HH:mm:ss")
+                    .setDateFormat("YYYY-MM-DD")
+                    .registerTypeAdapter(Time.class, new GsonTimeJsonHandler())
                     .setPrettyPrinting()
                     .serializeNulls()
                     .create();
