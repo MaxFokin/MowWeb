@@ -1,6 +1,6 @@
 package com.MowWeb.module.item.rest;
 
-import java.text.DateFormat;
+import java.sql.Time;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.Consumes;
@@ -14,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
 
 import com.MowWeb.module.item.*;
+import com.MowWeb.services.rest.util.GsonTimeJsonHandler;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -29,6 +30,7 @@ public class RSItemsImpl implements RSItemsInterface {
 		Gson gson = gsonBuilder.disableHtmlEscaping()
                     .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
                     .setDateFormat("YYYY-MM-DD")
+                    .registerTypeAdapter(Time.class, new GsonTimeJsonHandler())
                     .setPrettyPrinting()
                     .serializeNulls()
                     .create();

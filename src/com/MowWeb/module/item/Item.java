@@ -24,19 +24,19 @@ public class Item {
 	private int sfdcKey;
 	@SerializedName("step_id")
 	private int stepId;
-	//@TODO Object Step ???
+	//TODO Object Step ???
 	@SerializedName("created_date")
 	private Date createdDate;
 	@SerializedName("created_time")
 	private Time createdTime;
 	@SerializedName("container_key")
 	private int container;
-	//@TODO Object Container ???
+	//TODO Object Container ???
 	@SerializedName("sync_status")
 	private char syncStatus;
 	@SerializedName("decision_key")
 	private int decisionKey;
-	//@TODO Object Decision ???
+	//TODO Object Decision ???
 
 	/**
 	 * @return the key
