@@ -6,13 +6,13 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
-public class DataSource {
+public class mySQLDataSource {
 
-    private static DataSource datasource;
+    private static mySQLDataSource datasource;
     private ComboPooledDataSource cpds;
     final private DBConnData dbConnData = new DBConnData();
 
-    private DataSource() throws IOException, SQLException, PropertyVetoException {
+    private mySQLDataSource() throws IOException, SQLException, PropertyVetoException {
         cpds = new ComboPooledDataSource();
         cpds.setDriverClass("com.mysql.jdbc.Driver");
         cpds.setJdbcUrl("jdbc:mysql://" + dbConnData.getHost() + "/mowwebdb?autoReconnect=true&useSSL=false");
@@ -26,9 +26,9 @@ public class DataSource {
         cpds.setMaxStatements(180);
     }
 
-    public static DataSource getInstance() throws IOException, SQLException, PropertyVetoException {
+    public static mySQLDataSource getInstance() throws IOException, SQLException, PropertyVetoException {
         if (datasource == null) {
-            datasource = new DataSource();
+            datasource = new mySQLDataSource();
             return datasource;
         } else {
             return datasource;
