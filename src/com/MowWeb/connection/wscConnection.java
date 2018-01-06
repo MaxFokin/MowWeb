@@ -11,7 +11,7 @@ final public class wscConnection {
 	private EnterpriseConnection conn;
     final private ConnectorConfig config = new ConnectorConfig();
     
-    public void setConnection(){
+    public EnterpriseConnection setConnection(){
         config.setUsername(connData.getUser());
         config.setPassword(connData.getPass() + connData.getToken());
 
@@ -24,9 +24,14 @@ final public class wscConnection {
             System.out.println("\tService EndPoint: "+config.getServiceEndpoint());
             System.out.println("\tUsername: "+config.getUsername());
             System.out.println("\tSessionId: "+config.getSessionId());
-
+            
+            return conn;
+            
         } catch (ConnectionException e) {
             e.printStackTrace();
         }
+        
+        System.out.println("*** Enterprise Connection ERROR! ***");
+        return null;
     }
 }

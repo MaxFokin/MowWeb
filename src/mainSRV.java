@@ -15,10 +15,6 @@ public final class mainSRV {
 	static final wscConnection sfdcConn = new wscConnection();
 	static final RSPublisher rsApp = new RSPublisher();
 	
-	public static wscConnection get_sfdcConn() {
-		return sfdcConn;
-	}
-	
 	public static void main(String[] args) {
 		
 		//MySQL c3p0 Connection pool init + Check
@@ -37,7 +33,7 @@ public final class mainSRV {
 	    	if (sqlConn != null) try { sqlConn.close(); } catch (SQLException e) {e.printStackTrace();}
 	    }
 		
-		//SFDC Connection
+		//SFDC Connection Test
 		sfdcConn.setConnection();
 		
 		//RESTful Service Publish
