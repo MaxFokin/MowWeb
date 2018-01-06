@@ -1,4 +1,4 @@
-package com.MowWeb.rest.auth;
+package com.MowWeb.services.rest.auth;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

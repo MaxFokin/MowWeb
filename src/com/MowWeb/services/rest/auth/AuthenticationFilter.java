@@ -1,4 +1,4 @@
-package com.MowWeb.rest.auth;
+package com.MowWeb.services.rest.auth;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -76,8 +76,8 @@ public class AuthenticationFilter implements javax.ws.rs.container.ContainerRequ
             final String password = tokenizer.nextToken();
               
             //Verifying Username and password
-            System.out.println(username);
-            System.out.println(password);
+            System.out.println("*** RESTful Service Request ***");
+            System.out.println("\tUsername:" + username);
               
             //Verify user access
             if(method.isAnnotationPresent(RolesAllowed.class))

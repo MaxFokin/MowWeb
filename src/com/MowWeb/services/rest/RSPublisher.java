@@ -1,4 +1,4 @@
-package com.MowWeb.rest;
+package com.MowWeb.services.rest;
 
 import com.sun.net.httpserver.HttpServer;
 import java.net.URI;

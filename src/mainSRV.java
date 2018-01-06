@@ -1,5 +1,5 @@
 import com.MowWeb.connection.*;
-import com.MowWeb.rest.*;
+import com.MowWeb.services.rest.*;
 
 import java.beans.PropertyVetoException;
 import java.io.IOException;
@@ -24,7 +24,7 @@ public final class mainSRV {
 		//MySQL c3p0 Connection pool init + Check
 		Connection sqlConn = null;
 		try {
-			sqlConn = DataSource.getInstance().getConnection();
+			sqlConn = mySQLDataSource.getInstance().getConnection();
 			
 			System.out.println("*** SQL Connection Succeed ***");
 		} catch (PropertyVetoException | IOException e) {
