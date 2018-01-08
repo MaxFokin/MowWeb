@@ -1,29 +1,38 @@
 package com.MowWeb.services.rest.util;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.sql.Time;
-import java.text.DateFormat;
 
+import javax.ws.rs.Consumes;
+import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Configuration;
+import javax.ws.rs.core.Feature;
+import javax.ws.rs.core.FeatureContext;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.MessageBodyReader;
 import javax.ws.rs.ext.MessageBodyWriter;
- 
+import javax.ws.rs.ext.Provider;
+
+import org.glassfish.jersey.internal.InternalProperties;
+import org.glassfish.jersey.internal.util.PropertiesHelper;
+
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonParseException;
 
+
+@Provider
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class GsonMessageBodyHandler implements MessageBodyWriter<Object>,
-		MessageBodyReader<Object> {
+		MessageBodyReader<Object>, Feature {
 
+	private final static String JSON_FEATURE = GsonMessageBodyHandler.class.getSimpleName();
 	private static final String UTF_8 = "UTF-8";
 	 
     private Gson gson;
@@ -106,5 +115,20 @@ public class GsonMessageBodyHandler implements MessageBodyWriter<Object>,
         } finally {
             writer.close();
         }
+    }
+    
+    @Override
+    public boolean configure(FeatureContext context) {
+
+      context.register(JsonParseException.class);
+      //context.register(JsonMappingExceptionMapper.class);
+      context.register(GsonMessageBodyHandler.class, MessageBodyReader.class, MessageBodyWriter.class);
+
+      final Configuration config = context.getConfiguration();
+      // Disables discoverability of org.glassfish.jersey.jackson.JacksonFeature
+      context.property(
+          PropertiesHelper.getPropertyNameForRuntime(InternalProperties.JSON_FEATURE,
+                                                     config.getRuntimeType()), JSON_FEATURE);
+      return true;
     }
 }

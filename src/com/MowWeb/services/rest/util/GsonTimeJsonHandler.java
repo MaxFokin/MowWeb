@@ -17,12 +17,9 @@ public class GsonTimeJsonHandler implements JsonDeserializer<Time>,
     @Override
     public Time deserialize(JsonElement jsonElm, Type typeOfT, JsonDeserializationContext context)
             throws JsonParseException {
-    	Time time = context.deserialize(jsonElm, Time.class);
-    	//TODO Check if needed!!!!!
-        //String time = json.getAsString();
-        //String[] parts = time.split(":");
-        //return new Time(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), Integer.parseInt(parts[2]));
-    	return new Time(time.getTime());
+    	String timeAsString = jsonElm.getAsString();
+    	Time time = Time.valueOf(timeAsString);
+        return time;
     }
     
     @Override
