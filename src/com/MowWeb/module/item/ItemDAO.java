@@ -8,9 +8,14 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import com.MowWeb.connection.mySQLDataSource;
+import com.google.gson.annotations.SerializedName;
 
 public class ItemDAO {
 
@@ -28,6 +33,7 @@ public class ItemDAO {
 			System.out.println("VendorError: " + e.getErrorCode());
 	    }
 	}
+	
 	
 	public void closeConn() {
 		if (this.conn != null) try { this.conn.close(); } catch (SQLException e) {e.printStackTrace();}
@@ -111,11 +117,72 @@ public class ItemDAO {
         return item;
 	}
 	
-	public boolean addItem() {
-		/*
-		 * INSERT INTO `mowwebdb`.`item` (`erp_key`, `sf_key`, `step_id`, `created_date`, `created_time`, `container_key`, `sync_status`, `decision_key`) VALUES ('2', '2', '2', '050118', '18:00', '1', 'x', '0');
+	public String updateItemBuildSQL(int key, HashMap<String,String> set) {
+		/*UPDATE item SET erp_key=(int), sf_key=(int), step_id=(int),
+		created_date='YYYY-MM-DD', created_time='HH:mm:ss',
+			container_key=(int), sync_status=(char), decision_key=(cahr)
+				WHERE key=(int)
 		 */
+		String sql = "UPDATE item SET ";
+		String sqlEnd = " WHERE key=" + key;
+		Iterator it = set.entrySet().iterator();
 		
-		return true;
+	    while (it.hasNext()) {
+	        Map.Entry pair = (Map.Entry)it.next();
+	        sql += pair.getKey() + "=" + pair.getValue() + ", ";
+	        it.remove();
+	    }
+
+		sql = sql.substring(0, sql.length()-2);
+		return sql + sqlEnd;
 	}
+	
+	public boolean updateItem(int key, HashMap<String,String> set) {
+		boolean ret = false;
+		String sql = updateItemBuildSQL(key, set);
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			stmt = conn.createStatement();
+		    if (stmt.executeUpdate(sql) == 0)
+		    	System.out.println("Nothing To Update");
+		    ret = true;
+		} catch (SQLException ex){
+		    // handle any errors
+		    System.out.println("SQLException: " + ex.getMessage());
+		    System.out.println("SQLState: " + ex.getSQLState());
+		    System.out.println("VendorError: " + ex.getErrorCode());
+	 	} finally {
+			if (rs != null) try { rs.close(); } catch (SQLException e) {e.printStackTrace();}
+	 	}
+		
+		return ret;
+	}
+	
+	public boolean delItem(int key) {
+		boolean ret = false;
+		String sql = "DELETE FROM item WHERE item.key = ?";
+		PreparedStatement ps = null;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, key);
+			
+			if (ps.executeUpdate() == 0)
+		    	System.out.println("Key Not Found");
+			else
+				ret = true;
+		} catch (SQLException ex){
+		    // handle any errors
+		    System.out.println("SQLException: " + ex.getMessage());
+		    System.out.println("SQLState: " + ex.getSQLState());
+		    System.out.println("VendorError: " + ex.getErrorCode());
+	 	} finally {
+	        if (ps != null) try { ps.close(); } catch (SQLException e) {e.printStackTrace();}
+	 	}
+		
+		return ret;
+	}
+	
 }
