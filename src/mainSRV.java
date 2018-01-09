@@ -5,17 +5,13 @@ import java.beans.PropertyVetoException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import javax.xml.ws.Endpoint;
-
-import org.glassfish.jersey.jdkhttp.JdkHttpServerFactory;
-import org.glassfish.jersey.server.ResourceConfig;
 
 public final class mainSRV {
-	
-	static final wscConnection sfdcConn = new wscConnection();
+
 	static final RSPublisher rsApp = new RSPublisher();
 	
 	public static void main(String[] args) {
+		wscConnection sfdcConn = new wscConnection();
 		
 		//MySQL c3p0 Connection pool init + Check
 		Connection sqlConn = null;
@@ -34,7 +30,9 @@ public final class mainSRV {
 	    }
 		
 		//SFDC Connection Test
-		sfdcConn.setConnection();
+		sfdcConn.setConn();
+		sfdcConn.printSettings();
+		sfdcConn.closeConn();
 		
 		//RESTful Service Publish
 		rsApp.run();

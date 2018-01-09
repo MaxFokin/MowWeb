@@ -11,20 +11,12 @@ final public class wscConnection {
 	private EnterpriseConnection conn;
     final private ConnectorConfig config = new ConnectorConfig();
     
-    public EnterpriseConnection setConnection(){
+    public EnterpriseConnection setConn(){
         config.setUsername(connData.getUser());
         config.setPassword(connData.getPass() + connData.getToken());
 
         try {
             this.conn = Connector.newConnection(config);
-
-            // display some current settings
-            System.out.println("*** SFDC Connection ***");
-            System.out.println("\tAuth EndPoint: "+config.getAuthEndpoint());
-            System.out.println("\tService EndPoint: "+config.getServiceEndpoint());
-            System.out.println("\tUsername: "+config.getUsername());
-            System.out.println("\tSessionId: "+config.getSessionId());
-            
             return conn;
             
         } catch (ConnectionException e) {
@@ -33,5 +25,26 @@ final public class wscConnection {
         
         System.out.println("*** Enterprise Connection ERROR! ***");
         return null;
+    }
+    
+    public void printSettings() {
+    		System.out.println("*** SFDC Connection ***");
+        System.out.println("\tAuth EndPoint: "+config.getAuthEndpoint());
+        System.out.println("\tService EndPoint: "+config.getServiceEndpoint());
+        System.out.println("\tUsername: "+config.getUsername());
+        System.out.println("\tSessionId: "+config.getSessionId());
+    }
+    
+    public boolean closeConn() {
+    		boolean ret = false;
+    		
+		try {
+			this.conn.logout();
+			ret = true;
+		} catch (ConnectionException e) {
+			e.printStackTrace();
+		}
+		
+		return ret;
     }
 }
