@@ -1,4 +1,4 @@
-[
+{[
     {
         "key": 1,
         "erp_key": 1,
@@ -54,4 +54,4 @@
         "sync_status": "a",
         "decision_key": 0
     }
-]
+]}
