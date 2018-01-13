@@ -1,5 +1,4 @@
-{
-    "Items": [
+[
     {
         "key": 1,
         "erp_key": 1,
@@ -56,4 +55,3 @@
         "decision_key": 0
     }
 ]
-}
