@@ -27,6 +27,10 @@ public class ERPQueueItemDAO {
 	    }
 	}
 	
+	public void closeConn() {
+		if (this.conn != null) try { this.conn.close(); } catch (SQLException e) {e.printStackTrace();}
+	}
+	
 	public boolean handleTaskList(LinkedList<Item> erpQueue) {
 		
 		boolean ret = false;
