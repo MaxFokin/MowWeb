@@ -47,4 +47,17 @@ final public class wscConnection {
 		
 		return ret;
     }
+    
+    public boolean closeConn(EnterpriseConnection conn) {
+		boolean ret = false;
+		
+		try {
+			conn.logout();
+			ret = true;
+		} catch (ConnectionException e) {
+			e.printStackTrace();
+		}
+	
+		return ret;
+    }
 }
