@@ -27,8 +27,8 @@ final public class wscConnection {
         return null;
     }
     
-    public void printSettings() {
-    		System.out.println("*** SFDC Connection ***");
+    public void printConSettingsOnScreen() {
+		System.out.println("*** SFDC Connection ***");
         System.out.println("\tAuth EndPoint: "+config.getAuthEndpoint());
         System.out.println("\tService EndPoint: "+config.getServiceEndpoint());
         System.out.println("\tUsername: "+config.getUsername());

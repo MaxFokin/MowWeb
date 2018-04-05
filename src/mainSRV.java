@@ -31,8 +31,10 @@ public final class mainSRV {
 		
 		//SFDC Connection Test
 		sfdcConn.setConn();
-		sfdcConn.printSettings();
+		sfdcConn.printConSettingsOnScreen();
 		sfdcConn.closeConn();
+		
+		
 		
 		//RESTful Service Publish
 		rsApp.run();
