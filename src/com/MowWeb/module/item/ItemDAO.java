@@ -124,12 +124,12 @@ public class ItemDAO {
 				WHERE key=(int)
 		 */
 		String sql = "UPDATE item SET ";
-		String sqlEnd = " WHERE key=" + key;
+		String sqlEnd = " WHERE item.key=" + key;
 		Iterator it = set.entrySet().iterator();
 		
 	    while (it.hasNext()) {
 	        Map.Entry pair = (Map.Entry)it.next();
-	        sql += pair.getKey() + "=" + pair.getValue() + ", ";
+	        sql += pair.getKey() + "='" + pair.getValue() + "', ";
 	        it.remove();
 	    }
 
