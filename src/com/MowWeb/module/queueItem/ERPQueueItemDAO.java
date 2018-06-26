@@ -2,13 +2,23 @@ package com.MowWeb.module.queueItem;
 
 import java.beans.PropertyVetoException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 import com.MowWeb.connection.mySQLDataSource;
 import com.MowWeb.module.item.Item;
+import com.MowWeb.module.item.ItemDAO;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.sforce.soap.enterprise.sobject.MowWeb_Item__c;
 
 public class ERPQueueItemDAO {
 
@@ -77,4 +87,29 @@ public class ERPQueueItemDAO {
 		
 		return ret;
 	}
+
+	  @SuppressWarnings("resource")
+	  public JsonObject jsonGetRequest(String urlQueryString) {
+		  String json = null;
+		  JsonObject jsonObj = null;
+		  
+		  try {
+			  URL url = new URL(urlQueryString);
+			  HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+			  connection.setDoOutput(true);
+			  connection.setInstanceFollowRedirects(false);
+			  connection.setRequestMethod("GET");
+			  connection.setRequestProperty("Content-Type", "application/json");
+			  connection.setRequestProperty("charset", "utf-8");
+			  connection.connect();
+			  InputStream inStream = connection.getInputStream();
+			  json = new Scanner(inStream, "UTF-8").useDelimiter("\\Z").next(); // input stream to string
+			  jsonObj = new JsonParser().parse(json).getAsJsonObject();
+			  
+		  } catch (IOException ex) {
+			  ex.printStackTrace();
+		  }
+	    
+		  return jsonObj;
+	  }
 }
