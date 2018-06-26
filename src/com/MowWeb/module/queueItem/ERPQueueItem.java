@@ -2,6 +2,7 @@ package com.MowWeb.module.queueItem;
 
 import java.util.LinkedList;
 import com.MowWeb.module.item.Item;
+import com.google.gson.JsonObject;
 
 public class ERPQueueItem {
 /*
@@ -9,8 +10,22 @@ public class ERPQueueItem {
  */
 	private LinkedList<Item> taskList;
 	private LinkedList<Item> finishedTaskList;
+	private JsonObject erpJson;
 	
-	
+	/**
+	 * @return the erpJson
+	 */
+	public JsonObject getErpJson() {
+		return erpJson;
+	}
+
+	/**
+	 * @param erpJson the erpJson to set
+	 */
+	public void setErpJson(JsonObject erpJson) {
+		this.erpJson = erpJson;
+	}
+
 	/**
 	 * @return the taskList
 	 */
